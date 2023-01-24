@@ -21,10 +21,20 @@ namespace PlatformService.Controllers
         public ActionResult<IEnumerable<PlatformReadDto>> GetPlatforms()
         {
             Console.WriteLine("Getting Platforms....");
-            
+
             var platformItems = _repository.GetAllPlatforms();
 
             return Ok(_mapper.Map<IEnumerable<PlatformReadDto>>(platformItems));
+        }
+        [HttpGet("{id}", Name = "GetPlatformById")]
+        public ActionResult<IEnumerable<PlatformReadDto>> GetPlatformById(int id)
+        {
+            Console.WriteLine("Getting Single Platform....");
+
+            var platformItem = _repository.GetPlatformById(id);
+            if (platformItem != null)
+                return Ok(_mapper.Map<PlatformReadDto>(platformItem));
+            return NotFound();
         }
     }
 }
