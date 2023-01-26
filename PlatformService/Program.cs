@@ -26,7 +26,7 @@ if (app.Environment.IsDevelopment())
 }
 PrepDb.PrepPopulation(app);
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
